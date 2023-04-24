@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Raleway-Regular";
+    src: url("/fonts/Raleway/Raleway-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  
+  body {
+    font-family: "Raleway-Regular";
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scroll-bar::-webkit-scrollbar {
+    display: none;
+    }
+  #__next {
+    height: 100%;
+  }
+
+  .games-container {
+    height: calc(100vh - 5rem);
+  }
+  .game-container {
+    height: calc(100vh - 15rem);
+  }
