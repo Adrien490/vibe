@@ -1,12 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { modalVariants } from "../../hooks/useAnimation";
-import { useState } from "react";
 import { HiOutlineBars2 } from "react-icons/hi2";
 
 interface ModalProps {
   onClose: () => void;
   width: string;
-  height: number;
+  height?: number;
   className: string;
   modalIsOpen: boolean;
   children: React.ReactNode;
@@ -22,7 +21,6 @@ const Modal = ({
   className,
   position = "bottom",
 }: ModalProps) => {
-  const [modalHeight, setModalHeight] = useState<number>(height);
 
   const positionClass = () => {
     switch (position) {
@@ -52,15 +50,12 @@ const Modal = ({
             <motion.div
               className={`bg-background relative p-3 max-h-screen overflow-y-auto ${className}`}
               onClick={(e) => e.stopPropagation()}
-              style={{ width: width, height: modalHeight }}
+              style={{ width: width, height: height }}
               initial={{ y: "100vh" }}
               animate={{ y: 0 }}
               exit={{ y: "100vh" }}
               transition={{ duration: 0.4 }}
             >
-              <button className="absolute top-0 inset-x-px text-white flex justify-center text-center items-center">
-                <HiOutlineBars2 className="w-7 h-7"></HiOutlineBars2>
-              </button>
               {children}
             </motion.div>
           </motion.div>

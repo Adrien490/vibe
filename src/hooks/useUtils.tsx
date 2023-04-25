@@ -1,13 +1,5 @@
-import Cookies from "js-cookie";
 
 export const useUtils = () => {
-  const fetchPlayers = async () => {
-    const players = Cookies.get("players");
-    if (!players) {
-      return [];
-    }
-    return JSON.parse(players);
-  };
 
   const shuffle = (array: any) => {
     let currentIndex = array.length,

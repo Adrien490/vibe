@@ -14,15 +14,21 @@ export const GameList = () => {
   const games = [
     {
       title: "Je n'ai jamais",
-      description: "Un super jeu ",
+      description: "Si tu as déjà, tu bois!",
       image_url: "/img/jenaijamais.png",
       redirect_url: "/havenever",
     },
     {
       title: "Monopolis des défis",
-      description: "Lancez de dés et défis endiablés",
+      description: "Lancer de dés et défis endiablés",
       image_url: "/img/jenaijamais.png",
       redirect_url: "/challenge",
+    },
+    {
+      title: "Tour de table",
+      description: "Chacun raconte son anectote",
+      image_url: "/img/jenaijamais.png",
+      redirect_url: "/story",
     },
   ];
 

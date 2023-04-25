@@ -1,9 +1,9 @@
-
 import { type HaveNeverCategory } from "@prisma/client";
 import { motion } from "framer-motion";
 import React, { type Key } from "react";
 import { scaleAnimation } from "~/hooks/useAnimation";
 import { api } from "~/utils/api";
+import Loader from "../shared/loader";
 
 interface CategorySelectionListProps {
   selectedCategory: HaveNeverCategory | undefined;
@@ -14,32 +14,38 @@ export const CategorySelectionList: React.FC<CategorySelectionListProps> = ({
   selectedCategory,
   setSelectedCategory,
 }) => {
-  const {data} = api.haveNeverCategories.getAll.useQuery();
+  const { data, isFetching } = api.haveNeverCategories.getAll.useQuery();
+  const randomCategory: HaveNeverCategory = {
+    id: 0,
+    name: "Aléatoire",
+  };
+
+  const dataWithRandomCategory = data ? [randomCategory, ...data] : [];
   return (
     <>
-      
-
-      {data && data.map((item: HaveNeverCategory, index: Key) => (
-        <motion.div
-        key={index}
-        
-        onClick={() => setSelectedCategory(item)}
-        className={`flex w-40 justify-center break-all rounded-xl border-2 p-5 px-2 py-10 ${
-          selectedCategory === undefined
-            ? "selected-category border-primary"
-            : "border-secondary"
-        } flex-none items-center text-lg text-white`}
-        initial={scaleAnimation.initial}
-        animate={
-          selectedCategory === undefined
-            ? scaleAnimation.animate
-            : scaleAnimation.initial
-        }
-        transition={scaleAnimation.transition}
-      >
-        {item.name}
-      </motion.div>
-      ))}
+      {data &&
+        dataWithRandomCategory.map((item: HaveNeverCategory, index: Key) => (
+          <motion.div
+            key={index}
+            onClick={() => setSelectedCategory(item.id == 0 ? undefined : item)}
+            className={`flex w-40 justify-center break-all rounded-xl p-5 px-2 py-10 ${
+              (selectedCategory === item && item.id !== 0) ||
+              (selectedCategory === undefined && item.id === 0)
+                ? "border-2 border-primary"
+                : "border-2 border-secondary"
+            } flex-none items-center text-lg text-white`}
+            initial={scaleAnimation.initial}
+            animate={
+              (selectedCategory === item && item.id !== 0) ||
+              (selectedCategory === undefined && item.id === 0)
+                ? scaleAnimation.animate
+                : scaleAnimation.initial
+            }
+            transition={scaleAnimation.transition}
+          >
+            {item.name}
+          </motion.div>
+        ))}
     </>
   );
 };
