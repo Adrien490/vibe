@@ -38,7 +38,7 @@ export const HaveNeverListForSettings: React.FC = () => {
             <div className="flex w-1/5 items-center justify-end p-4">
               <HaveNeverDeleteButton
                 id={item.id}
-                handleDelete={handleDelete}
+                handleDelete={()=> void handleDelete}
               ></HaveNeverDeleteButton>
             </div>
           </motion.div>
