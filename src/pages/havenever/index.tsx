@@ -16,7 +16,7 @@ export default function HaveNever() {
   return (
     <div className="h-screen bg-background">
       <div className="relative flex h-20 justify-center p-2">
-        <h1 className="text-center text-3xl text-white">Je n'ai jamais</h1>
+        <h1 className="text-center text-3xl text-white">Je n&apos;ai jamais</h1>
         <Link
           className="absolute left-1 top-2 rounded-xl p-3 text-white"
           href="/"
@@ -33,7 +33,6 @@ export default function HaveNever() {
       <div className="game-container hide-scroll-bar flex flex-col gap-6 overflow-y-auto p-3">
         <div className="border-1 flex w-full items-center gap-7 overflow-auto whitespace-nowrap p-2 px-3">
           <CategorySelectionList
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           ></CategorySelectionList>
