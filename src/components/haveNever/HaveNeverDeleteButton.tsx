@@ -1,17 +1,16 @@
 import { HiOutlineMinus } from "react-icons/hi2";
 
 interface HaveNeverDeleteButtonProps {
-  id: number;
-  handleDelete: (id: number) => void;
+  handleDelete: (id: number) => Promise<void>;
+  
 }
 
 export const HaveNeverDeleteButton = ({
-  id,
   handleDelete,
 }: HaveNeverDeleteButtonProps) => {
   return (
     <button
-      onClick={() => handleDelete(id)}
+    onClick={() => handleDelete}
       className="rounded-full bg-red-400 p-2 text-white"
     >
       <HiOutlineMinus className="text-xl" />

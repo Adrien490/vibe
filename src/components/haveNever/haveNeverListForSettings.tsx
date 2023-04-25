@@ -1,15 +1,24 @@
 import { type HaveNever } from "@prisma/client";
 import { motion } from "framer-motion";
 import React, { type Key } from "react";
+import { HiOutlineMinus } from "react-icons/hi2";
 import { listVariants } from "~/hooks/useAnimation";
 import { api } from "~/utils/api";
 import Loader from "../shared/loader";
-import { HaveNeverDeleteButton } from "./HaveNeverDeleteButton";
 
 export const HaveNeverListForSettings: React.FC = () => {
   const { data, isFetching, refetch } = api.haveNever.getAll.useQuery();
   const { mutateAsync, isLoading } = api.haveNever.deleteById.useMutation();
+
+  const handleDeleteWrapper = (id: number) => {
+    const deleteItem = async () => {
+      await handleDelete(id);
+    };
+  
+    void deleteItem();
+  };
   const handleDelete = async (id: number) => {
+    console.log(id)
     try {
       await mutateAsync({ id });
       await refetch();
@@ -19,8 +28,7 @@ export const HaveNeverListForSettings: React.FC = () => {
   };
   return (
     <>
-    
-      {isFetching || isLoading && <Loader></Loader>}
+      {isFetching || (isLoading && <Loader></Loader>)}
       {data &&
         data.map((item: HaveNever, index: Key) => (
           <motion.div
@@ -36,10 +44,12 @@ export const HaveNeverListForSettings: React.FC = () => {
               {item.phrase}
             </div>
             <div className="flex w-1/5 items-center justify-end p-4">
-              <HaveNeverDeleteButton
-                id={item.id}
-                handleDelete={()=> void handleDelete}
-              ></HaveNeverDeleteButton>
+              <button
+                onClick={() => handleDeleteWrapper(item.id)}
+                className="rounded-full bg-red-400 p-2 text-white"
+              >
+                <HiOutlineMinus className="text-xl" />
+              </button>
             </div>
           </motion.div>
         ))}

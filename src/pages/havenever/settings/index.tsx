@@ -11,7 +11,6 @@ export default function Settings() {
 
   return (
     <>
-    
       <div className="relative sticky top-0 z-20 flex h-20 justify-center bg-background p-3">
         <h1 className="m-0 text-center text-3xl text-white">Paramètres</h1>
         <Link
@@ -45,7 +44,9 @@ export default function Settings() {
         <h1 className="mt-8 text-center text-xl text-white">
           Je n&apos;ai jamais ...
         </h1>
-        <CreateHaveNeverForm onClose={()=>setModalIsOpen(false)}></CreateHaveNeverForm>
+        <CreateHaveNeverForm
+          onClose={() => setModalIsOpen(false)}
+        ></CreateHaveNeverForm>
       </Modal>
     </>
   );
