@@ -1,35 +1,21 @@
 import { type HaveNever } from "@prisma/client";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { type Key } from "react";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { listVariants } from "~/hooks/useAnimation";
-import { api } from "~/utils/api";
-import Loader from "../shared/loader";
 
-export const HaveNeverListForSettings: React.FC = () => {
-  const { data, isFetching, refetch } = api.haveNever.getAll.useQuery();
-  const { mutateAsync, isLoading } = api.haveNever.deleteById.useMutation();
+interface HaveNeverListForSettingsProps{
+  haveNever: HaveNever[]  | undefined
+  handleDeleteWrapper: (id:number)=>void
+}
 
-  const handleDeleteWrapper = (id: number) => {
-    const deleteItem = async () => {
-      await handleDelete(id);
-    };
+export const HaveNeverListForSettings = ({haveNever, handleDeleteWrapper}: HaveNeverListForSettingsProps) => {
   
-    void deleteItem();
-  };
-  const handleDelete = async (id: number) => {
-    try {
-      await mutateAsync({ id });
-      await refetch();
-    } catch (error) {
-      console.error("Failed to delete item:", error);
-    }
-  };
   return (
     <>
-      {isFetching || (isLoading && <Loader></Loader>)}
-      {data &&
-        data.map((item: HaveNever, index: Key) => (
+    <AnimatePresence>
+      {haveNever &&
+        haveNever.map((item: HaveNever, index: Key) => (
           <motion.div
             key={index}
             className="flex border-b border-white p-2"
@@ -52,6 +38,7 @@ export const HaveNeverListForSettings: React.FC = () => {
             </div>
           </motion.div>
         ))}
+        </AnimatePresence>
     </>
   );
 };
