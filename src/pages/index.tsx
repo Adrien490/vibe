@@ -11,16 +11,10 @@ const Home: NextPage = () => {
       redirect_url: "/havenever",
     },
     {
-      title: "Monopolis des défis",
-      description: "Lancer de dés et défis endiablés",
-      image_url: "/img/jenaijamais.png",
-      redirect_url: "/challenge",
-    },
-    {
       title: "Tour de table",
-      description: "Chacun raconte son anectote",
-      image_url: "/img/jenaijamais.png",
-      redirect_url: "/story",
+      description: "Chacun raconte son anectote. Tu refuses tu bois!",
+      image_url: "/img/tour.png",
+      redirect_url: "/",
     },
   ];
   return (
