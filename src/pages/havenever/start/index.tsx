@@ -17,10 +17,9 @@ export default function Start() {
 
   useEffect(() => {
     if (data !== undefined) {
-      const newData = [...data].sort(() => 0.5 - Math.random()).slice(
-        0,
-        parseInt(query["limit"] as string)
-      );
+      const newData = [...data]
+        .sort(() => 0.5 - Math.random())
+        .slice(0, parseInt(query["limit"] as string));
       setShuffledData(newData);
     }
   }, [data, query, setShuffledData]);
