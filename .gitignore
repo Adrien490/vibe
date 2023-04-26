@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+# pwa
+public/sw.js
+public/workbox-*
+
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal

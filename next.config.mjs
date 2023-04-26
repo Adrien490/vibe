@@ -3,6 +3,7 @@
  * for Docker builds.
  */
 await import("./src/env.mjs");
+import nextPWA from "next-pwa";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -19,4 +20,10 @@ const config = {
     defaultLocale: "en",
   },
 };
-export default config;
+
+const pwaConfig = {
+  dest: "public",
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+};
+export default nextPWA(pwaConfig)(config);
