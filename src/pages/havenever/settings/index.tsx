@@ -15,9 +15,9 @@ export default function Settings() {
         <h1 className="m-0 text-center text-3xl text-white">Paramètres</h1>
         <Link
           href="/havenever"
-          className="absolute left-1 top-2 rounded-xl p-3 text-white"
+          className=" absolute left-1 top-2 rounded-xl p-3 text-white"
         >
-          <HiArrowLeft className="h-5 w-5"></HiArrowLeft>
+          <HiArrowLeft size={25}></HiArrowLeft>
         </Link>
       </div>
       <div className="game-container flex flex-col overflow-y-auto bg-background p-3">

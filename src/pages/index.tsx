@@ -2,10 +2,27 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { GameList } from "~/components/gameList";
 
-import { api } from "~/utils/api";
-
 const Home: NextPage = () => {
-
+  const games = [
+    {
+      title: "Je n'ai jamais",
+      description: "Si tu as déjà, tu bois!",
+      image_url: "/img/jenaijamais.png",
+      redirect_url: "/havenever",
+    },
+    {
+      title: "Monopolis des défis",
+      description: "Lancer de dés et défis endiablés",
+      image_url: "/img/jenaijamais.png",
+      redirect_url: "/challenge",
+    },
+    {
+      title: "Tour de table",
+      description: "Chacun raconte son anectote",
+      image_url: "/img/jenaijamais.png",
+      redirect_url: "/story",
+    },
+  ];
   return (
     <>
       <Head>
@@ -14,7 +31,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-screen bg-background flex-col gap-4 flex items-center justify-center overflow-y-auto">
-       <GameList></GameList>
+       <GameList games={games}></GameList>
       </main>
     </>
   );

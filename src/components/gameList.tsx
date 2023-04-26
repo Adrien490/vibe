@@ -4,34 +4,17 @@ import { listVariants } from "~/hooks/useAnimation";
 import GameItem from "~/components/gameItem";
 
 interface GameListProps {
-    title: string;
-    description: string;
-    image_url: string;
-    redirect_url: string;
+  title: string;
+  description: string;
+  image_url: string;
+  redirect_url: string;
 }
 
-export const GameList = () => {
-  const games = [
-    {
-      title: "Je n'ai jamais",
-      description: "Si tu as déjà, tu bois!",
-      image_url: "/img/jenaijamais.png",
-      redirect_url: "/havenever",
-    },
-    {
-      title: "Monopolis des défis",
-      description: "Lancer de dés et défis endiablés",
-      image_url: "/img/jenaijamais.png",
-      redirect_url: "/challenge",
-    },
-    {
-      title: "Tour de table",
-      description: "Chacun raconte son anectote",
-      image_url: "/img/jenaijamais.png",
-      redirect_url: "/story",
-    },
-  ];
+interface Props {
+  games: GameListProps[];
+}
 
+export const GameList = ({ games }: Props) => {
   return (
     <>
       {games.map((game, index) => (

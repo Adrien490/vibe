@@ -18,7 +18,6 @@ export const HaveNeverListForSettings: React.FC = () => {
     void deleteItem();
   };
   const handleDelete = async (id: number) => {
-    console.log(id)
     try {
       await mutateAsync({ id });
       await refetch();

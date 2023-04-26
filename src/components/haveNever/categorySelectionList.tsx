@@ -2,29 +2,22 @@ import { type HaveNeverCategory } from "@prisma/client";
 import { motion } from "framer-motion";
 import React, { type Key } from "react";
 import { scaleAnimation } from "~/hooks/useAnimation";
-import { api } from "~/utils/api";
-import Loader from "../shared/loader";
 
 interface CategorySelectionListProps {
   selectedCategory: HaveNeverCategory | undefined;
   setSelectedCategory: (category: HaveNeverCategory | undefined) => void;
+  categories: HaveNeverCategory[];
 }
 
 export const CategorySelectionList: React.FC<CategorySelectionListProps> = ({
   selectedCategory,
   setSelectedCategory,
+  categories,
 }) => {
-  const { data, isFetching } = api.haveNeverCategories.getAll.useQuery();
-  const randomCategory: HaveNeverCategory = {
-    id: 0,
-    name: "Aléatoire",
-  };
-
-  const dataWithRandomCategory = data ? [randomCategory, ...data] : [];
   return (
     <>
-      {data &&
-        dataWithRandomCategory.map((item: HaveNeverCategory, index: Key) => (
+      {categories &&
+        categories.map((item: HaveNeverCategory, index: Key) => (
           <motion.div
             key={index}
             onClick={() => setSelectedCategory(item.id == 0 ? undefined : item)}

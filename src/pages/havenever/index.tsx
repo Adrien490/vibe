@@ -5,6 +5,7 @@ import { StartButton } from "~/components/haveNever/startButton";
 import { useState } from "react";
 import { CategorySelectionList } from "~/components/haveNever/categorySelectionList";
 import { type HaveNeverCategory } from "@prisma/client";
+import { api } from "~/utils/api";
 
 export default function HaveNever() {
   const [selectedCard, setSelectedCard] = useState<number>(50);
@@ -12,6 +13,14 @@ export default function HaveNever() {
   const [selectedCategory, setSelectedCategory] = useState<
     HaveNeverCategory | undefined
   >(undefined);
+
+  const { data, isFetching } = api.haveNeverCategories.getAll.useQuery();
+  const randomCategory: HaveNeverCategory = {
+    id: 0,
+    name: "Aléatoire",
+  };
+
+  const dataWithRandomCategory = data ? [randomCategory, ...data] : [];
 
   return (
     <div className="h-screen bg-background">
@@ -24,7 +33,7 @@ export default function HaveNever() {
           <HiArrowLeft size={25}></HiArrowLeft>
         </Link>
         <Link
-          className="absolute right-1 top-2 rounded-xl p-3 text-white"
+          className="animate-bounce absolute right-1 top-2 rounded-xl p-3 text-white"
           href="/havenever/settings"
         >
           <HiOutlineCog6Tooth size={25}></HiOutlineCog6Tooth>
@@ -33,6 +42,7 @@ export default function HaveNever() {
       <div className="game-container hide-scroll-bar flex flex-col gap-6 overflow-y-auto p-3">
         <div className="border-1 flex w-full items-center gap-7 overflow-auto whitespace-nowrap p-2 px-3">
           <CategorySelectionList
+          categories={dataWithRandomCategory}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           ></CategorySelectionList>

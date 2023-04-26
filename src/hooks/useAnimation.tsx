@@ -1,4 +1,4 @@
-import { Variants } from "framer-motion";
+import { type Variants } from "framer-motion";
 
 export const buttonVariants: Variants = {
   rest: { scale: 1 },
@@ -10,6 +10,10 @@ export const buttonVariants: Variants = {
   visible: {
     opacity: 1,
   },
+};
+export const tapAnimation = {
+  scale: 0.95,
+  boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.2)",
 };
 
 export const listVariants = {

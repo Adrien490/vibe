@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { modalVariants } from "../../hooks/useAnimation";
-import { HiOutlineBars2 } from "react-icons/hi2";
 
 interface ModalProps {
   onClose: () => void;

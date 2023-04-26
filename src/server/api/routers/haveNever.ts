@@ -14,6 +14,17 @@ export const haveNeverRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const { categoryId } = input;
+
+      // Vérifier si la catégorie existe
+      const categoryExists = await ctx.prisma.haveNeverCategory.findUnique({
+        where: { id: categoryId },
+      });
+
+      // Si la catégorie n'existe pas, renvoyer tous les éléments haveNever
+      if (!categoryExists) {
+        return await ctx.prisma.haveNever.findMany();
+      }
+
       const haveNeverByCategory = await ctx.prisma.haveNever.findMany({
         where: { categoryId },
       });
