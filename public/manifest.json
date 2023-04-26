@@ -1,7 +1,7 @@
 {
-    "name": "Next.js PWA Demo",
-    "short_name": "PWADemo",
-    "description": "A Progressive Web App built with Next.js",
+    "name": "Vibes",
+    "short_name": "Vibes",
+    "description": "",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",

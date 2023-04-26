@@ -1,4 +1,5 @@
 import { type HaveNever } from "@prisma/client";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -10,6 +11,8 @@ import { api } from "~/utils/api";
 
 export default function Start() {
   const [shuffledData, setShuffledData] = useState<HaveNever[]>([]);
+  const [progress, setProgress] = useState(0);
+  const [initialCardsCount, setInitialCardsCount] = useState(0);
   const { query } = useRouter();
   const { data, isLoading } = api.haveNever.getAllByCategory.useQuery({
     categoryId: parseInt(query["category"] as string),
@@ -21,19 +24,29 @@ export default function Start() {
         .sort(() => 0.5 - Math.random())
         .slice(0, parseInt(query["limit"] as string));
       setShuffledData(newData);
+      setInitialCardsCount(data.length);
     }
   }, [data, query, setShuffledData]);
 
   const handleClick = () => {
     if (shuffledData.length > 0) {
       setShuffledData(shuffledData.slice(1));
-      //setProgress(progress + 100 / initialCardsCount); // Use initialCardsCount here
+      setProgress(progress + 100 / initialCardsCount); // Use initialCardsCount here
     }
   };
   return (
     <>
       {isLoading && <Loader></Loader>}
       <div className="relative flex h-20 justify-center bg-background p-3">
+      <div className="mt-3 rounded-xl w-1/2 bg-gray-300 h-2">
+          <motion.div
+            className="bg-primary h-2"
+            style={{ width: `${Math.min(progress, 100)}%` }}
+            initial={{ width: 0 }}
+            animate={{ width: `${Math.min(progress, 100)}%` }}
+            transition={{ duration: 0.3 }}
+          ></motion.div>
+        </div>
         <Link
           className="absolute left-1 top-2 rounded-xl p-3 text-white"
           href="/havenever"
