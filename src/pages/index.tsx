@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import { GameList } from "~/components/gameList";
+import { Title } from "~/components/shared/title";
 
 const Home: NextPage = () => {
   const games = [
@@ -24,9 +25,12 @@ const Home: NextPage = () => {
   ];
   return (
     <>
-      <main className="min-h-screen bg-background flex-col gap-4 flex items-center justify-center overflow-y-auto">
-       <GameList games={games}></GameList>
-      </main>
+      <div className="relative sticky top-0 z-20 border-2 flex justify-center overflow-hidden p-3">
+        <Title></Title>
+      </div>
+      <div className="h-[calc(100vh_-_192px)] border-2 flex flex-col justify-center gap-4 overflow-y-auto">
+        <GameList games={games}></GameList>
+      </div>
     </>
   );
 };
