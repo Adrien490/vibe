@@ -9,7 +9,7 @@ import { api } from "~/utils/api";
 
 export default function HaveNever() {
   const [selectedCard, setSelectedCard] = useState<number>(50);
-  
+
   const [selectedCategory, setSelectedCategory] = useState<
     HaveNeverCategory | undefined
   >(undefined);
@@ -23,7 +23,7 @@ export default function HaveNever() {
   const dataWithRandomCategory = data ? [randomCategory, ...data] : [];
 
   return (
-    <div className="h-screen bg-background">
+    <>
       <div className="relative flex h-20 justify-center p-2">
         <h1 className="text-center text-3xl text-white">Je n&apos;ai jamais</h1>
         <Link
@@ -33,7 +33,7 @@ export default function HaveNever() {
           <HiArrowLeft size={25}></HiArrowLeft>
         </Link>
         <Link
-          className="animate-bounce absolute right-1 top-2 rounded-xl p-3 text-white"
+          className="absolute right-1 top-2 animate-bounce rounded-xl p-3 text-white"
           href="/havenever/settings"
         >
           <HiOutlineCog6Tooth size={25}></HiOutlineCog6Tooth>
@@ -42,7 +42,7 @@ export default function HaveNever() {
       <div className="game-container hide-scroll-bar flex flex-col gap-6 overflow-y-auto p-3">
         <div className="border-1 flex w-full items-center gap-7 overflow-auto whitespace-nowrap p-2 px-3">
           <CategorySelectionList
-          categories={dataWithRandomCategory}
+            categories={dataWithRandomCategory}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           ></CategorySelectionList>
@@ -61,8 +61,11 @@ export default function HaveNever() {
         </div>
       </div>
       <div className="flex h-40 w-full flex-col items-center justify-center gap-3 overflow-hidden">
-        <StartButton selectedCategory={selectedCategory} selectedCard={selectedCard}></StartButton>
+        <StartButton
+          selectedCategory={selectedCategory}
+          selectedCard={selectedCard}
+        ></StartButton>
       </div>
-    </div>
+    </>
   );
 }

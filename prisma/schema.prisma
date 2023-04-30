@@ -8,46 +8,26 @@ datasource db {
     relationMode = "prisma"
 }
 
-model ChallengeRoom {
-    id         String               @id @default(cuid())
-    createdAt  DateTime             @default(now())
-    updatedAt  DateTime             @updatedAt
-    name       String
-    gameStates ChallengeUserState[]
+model Room {
+    id        Int   @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    name      String
+    public    Boolean
 }
 
-model ChallengeUserState {
-    id              String        @id @default(cuid())
-    createdAt       DateTime      @default(now())
-    updatedAt       DateTime      @updatedAt
-    sessionId       String
-    challengeRoomId String
-    position        Int
-    gameRoom        ChallengeRoom @relation(fields: [challengeRoomId], references: [id])
-
-    @@index([challengeRoomId])
-}
-
-model Challenge {
-    id          String   @id @default(cuid())
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    title       String
-    description String
-}
 
 model HaveNeverCategory {
-  id                    Int                    @id @default(autoincrement())
-  name                  String
-  haveNevers            HaveNever[]            @relation("CategoryHaveNevers")
+    id         Int         @id @default(autoincrement())
+    name       String
+    haveNevers HaveNever[] @relation("CategoryHaveNevers")
 }
 
 model HaveNever {
-  id                    Int                    @id @default(autoincrement())
-  phrase                String
-  categoryId            Int
-  category              HaveNeverCategory      @relation("CategoryHaveNevers", fields: [categoryId], references: [id])
+    id         Int               @id @default(autoincrement())
+    phrase     String
+    categoryId Int
+    category   HaveNeverCategory @relation("CategoryHaveNevers", fields: [categoryId], references: [id])
 
-  @@index([categoryId])
+    @@index([categoryId])
 }
-

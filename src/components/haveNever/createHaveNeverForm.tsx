@@ -31,7 +31,7 @@ export const CreateHaveNeverForm = ({ onClose }: CreateHaveNeverFormProps) => {
   return (
     <>
       {isLoading && <Loader></Loader>}
-      <form className="flex flex-col gap-3" onSubmit={formik.handleSubmit}>
+      <form className="flex py-1 flex-col gap-3" onSubmit={formik.handleSubmit}>
         <textarea
           rows={2}
           className="border-1 w-full rounded-lg border-secondary bg-background p-2 text-white"
@@ -43,7 +43,7 @@ export const CreateHaveNeverForm = ({ onClose }: CreateHaveNeverFormProps) => {
         />
 
         <select
-          className="border-1 w-full py-3 rounded-lg border-secondary bg-background text-white"
+          className="border-1 w-full py-5 rounded-lg border-secondary bg-background text-white"
           id="categoryId"
           name="categoryId"
           onChange={formik.handleChange}

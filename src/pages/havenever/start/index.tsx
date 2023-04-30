@@ -25,7 +25,7 @@ export default function Start() {
         .sort(() => 0.5 - Math.random())
         .slice(0, parseInt(query["limit"] as string));
       setShuffledData(newData);
-      setInitialCardsCount(data.length);
+      setInitialCardsCount(newData.length);
     }
   }, [data, query, setShuffledData]);
 

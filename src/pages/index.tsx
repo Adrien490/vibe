@@ -1,5 +1,4 @@
 import { type NextPage } from "next";
-import Head from "next/head";
 import { GameList } from "~/components/gameList";
 
 const Home: NextPage = () => {
@@ -9,6 +8,12 @@ const Home: NextPage = () => {
       description: "Si tu as déjà, tu bois!",
       image_url: "/img/jenaijamais.png",
       redirect_url: "/havenever",
+    },
+    {
+      title: "Désigne !",
+      description: "Désignez un ou plusieurs joueurs",
+      image_url: "/img/man_pointing.png",
+      redirect_url: "/designate",
     },
     {
       title: "Tour de table",

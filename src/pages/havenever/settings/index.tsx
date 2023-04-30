@@ -32,7 +32,7 @@ export default function Settings() {
   return (
     <>
     {isFetching && <Loader></Loader>}
-      <div className="relative sticky top-0 z-20 flex h-20 justify-center bg-background p-3">
+      <div className="relative sticky top-0 z-20 flex h-20 justify-center p-3">
         <h1 className="m-0 text-center text-3xl text-white">Paramètres</h1>
         <Link
           href="/havenever"
@@ -41,7 +41,7 @@ export default function Settings() {
           <HiArrowLeft size={25}></HiArrowLeft>
         </Link>
       </div>
-      <div className="game-container flex flex-col overflow-y-auto bg-background p-3">
+      <div className="game-container flex flex-col overflow-y-auto p-3">
         <div className="flex flex-col">
           <HaveNeverListForSettings haveNever={haveNever} handleDeleteWrapper={handleDeleteWrapper}></HaveNeverListForSettings>
         </div>
