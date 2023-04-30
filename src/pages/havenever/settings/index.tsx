@@ -35,7 +35,7 @@ export default function Settings() {
     <>
     {isFetching || isRefetching && <Loader></Loader>}
       <div className="relative sticky top-0 z-20 flex h-20 justify-center p-3">
-        <h1 className="m-0 text-center text-3xl text-white">Paramètres</h1>
+        <h2 className="m-0 text-center text-3xl text-white">Paramètres</h2>
         <Link
           href="/havenever"
           className=" absolute left-1 top-2 rounded-xl p-3 text-white"

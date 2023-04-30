@@ -25,7 +25,7 @@ export default function HaveNever() {
   return (
     <>
       <div className="relative flex h-20 justify-center p-2">
-        <h1 className="text-center text-3xl text-white">Je n&apos;ai jamais</h1>
+        <h2 className="text-center text-3xl text-white">Je n&apos;ai jamais</h2>
         <Link
           className="absolute left-1 top-2 rounded-xl p-3 text-white"
           href="/"
