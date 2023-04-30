@@ -64,9 +64,9 @@ export default function Settings() {
         modalIsOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <h1 className="mt-8 text-center text-xl text-white">
+        <h2 className="mt-8 text-center text-xl text-white">
           Je n&apos;ai jamais ...
-        </h1>
+        </h2>
         <CreateHaveNeverForm
           onClose={() => setModalIsOpen(false)}
         ></CreateHaveNeverForm>
