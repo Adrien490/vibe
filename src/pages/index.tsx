@@ -41,7 +41,7 @@ const Home: NextPage = () => {
             />
           </div>
       </div>
-      <div className="h-[calc(100vh_-_200px)] justify-center flex flex-col py-8 gap-4 overflow-y-auto">
+      <div className="h-[calc(100vh_-_200px)] flex flex-col py-8 gap-4 overflow-y-auto">
         <GameList games={games}></GameList>
       </div>
     </>
