@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
-import { CreateHaveNeverForm } from "~/components/haveNever/createHaveNeverForm";
+import { HiArrowLeft } from "react-icons/hi2";
 import Modal from "~/components/shared/modal";
+import Typewriter from 'typewriter-effect';
 
 export default function Room() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -17,21 +17,32 @@ export default function Room() {
         >
           <HiArrowLeft size={25}></HiArrowLeft>
         </Link>
-        <Link
-          className="absolute right-1 top-2 animate-bounce rounded-xl p-3 text-white"
-          href="/havenever/settings"
-        >
-          <HiOutlineCog6Tooth size={25}></HiOutlineCog6Tooth>
-        </Link>
       </div>
-      <div className="flex h-40 w-full items-center justify-center overflow-hidden bg-background">
+      <div className="h-[calc(100vh_-_240px)] flex flex-col py-8 gap-8 items-center overflow-y-auto">
+        <div className="text-white text-xl">
+        <Typewriter
+              options={{
+                strings: ['Rejoignez un salon pour commencer la partie'],
+                autoStart: true,
+                loop: false,
+                deleteSpeed: Number.MAX_SAFE_INTEGER,
+                delay: 20,
+              }}
+            />
+        </div>
+        <div className="text-white">
+            test
+        </div>
+        
+      </div>
+      <div className="flex h-40 w-full items-center justify-center overflow-hidden">
         <motion.button
           onClick={() => setModalIsOpen(true)}
           className="border-3 w-60 rounded-full border border-white bg-primary p-1 p-3 text-xl text-white text-white"
           whileTap={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
         >
-          Ajouter un salon
+          Créer un salon
         </motion.button>
       </div>
       <Modal

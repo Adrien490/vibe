@@ -36,6 +36,7 @@ const Home: NextPage = () => {
                 strings: ['Les meilleurs jeux pour viber en soirée !'],
                 autoStart: true,
                 loop: false,
+                deleteSpeed: Number.MAX_SAFE_INTEGER,
                 delay: 20,
               }}
             />

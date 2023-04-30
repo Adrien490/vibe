@@ -10,6 +10,7 @@ export default {
         "contrast":'#E3CCAE',
         "background":'#000000'
       },
+      
     }
   },
   plugins: [],

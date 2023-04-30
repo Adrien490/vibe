@@ -10,7 +10,7 @@ interface CreateHaveNeverFormProps {
 export const CreateHaveNeverForm = ({ onClose }: CreateHaveNeverFormProps) => {
   const { data } = api.haveNeverCategories.getAll.useQuery();
   const { mutateAsync, isLoading } = api.haveNever.create.useMutation();
-  const { refetch } = api.haveNever.getAll.useQuery();
+  const { refetch, isRefetching } = api.haveNever.getAll.useQuery();
 
   const formik = useFormik({
     initialValues: {

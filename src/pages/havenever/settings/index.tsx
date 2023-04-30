@@ -7,10 +7,11 @@ import { HaveNeverListForSettings } from "~/components/haveNever/haveNeverListFo
 import { CreateHaveNeverForm } from "~/components/haveNever/createHaveNeverForm";
 import { api } from "~/utils/api";
 import Loader from "~/components/shared/loader";
+import { HaveNever } from "@prisma/client";
 
 export default function Settings() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { data:haveNever, isFetching, refetch } = api.haveNever.getAll.useQuery();
+  const { data:haveNever, isFetching, refetch, isRefetching } = api.haveNever.getAll.useQuery();
   const { mutateAsync, isLoading } = api.haveNever.deleteById.useMutation();
 
   const handleDeleteWrapper = (id: number) => {
@@ -29,9 +30,10 @@ export default function Settings() {
     }
   };
 
+
   return (
     <>
-    {isFetching && <Loader></Loader>}
+    {isFetching || isRefetching && <Loader></Loader>}
       <div className="relative sticky top-0 z-20 flex h-20 justify-center p-3">
         <h1 className="m-0 text-center text-3xl text-white">Paramètres</h1>
         <Link
