@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
 import Modal from "~/components/shared/modal";
-import Typewriter from 'typewriter-effect';
 
 export default function Room() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -20,15 +19,7 @@ export default function Room() {
       </div>
       <div className="h-[calc(100vh_-_240px)] flex flex-col py-8 gap-8 items-center overflow-y-auto">
         <div className="text-white text-xl">
-        <Typewriter
-              options={{
-                strings: ['Rejoignez un salon pour commencer la partie'],
-                autoStart: true,
-                loop: false,
-                deleteSpeed: Number.MAX_SAFE_INTEGER,
-                delay: 20,
-              }}
-            />
+        Liste des salons disponibles 
         </div>
         <div className="text-white">
             test
@@ -51,9 +42,9 @@ export default function Room() {
         modalIsOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <h1 className="mt-8 text-center text-xl text-white">
+        <h2 className="mt-8 text-center text-xl text-white">
           Créez un salon et rejoignez la partie
-        </h1>
+        </h2>
         
       </Modal>
     </>
