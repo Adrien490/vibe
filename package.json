@@ -28,6 +28,7 @@
     "react-icons": "^4.8.0",
     "superjson": "1.12.2",
     "three": "^0.151.3",
+    "typewriter-effect": "^2.19.0",
     "zod": "^3.21.4",
     "zustand": "^4.3.7"
   },
