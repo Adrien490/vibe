@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   ];
   return (
     <>
-      <div className="z-20 flex flex-col items-center justify-center gap-5 overflow-hidden p-3 border-b-secondary border-b py-8">
+      <div className="z-20 flex flex-col items-center justify-center gap-5 overflow-hidden p-3 border-b-secondary border-dashed border-b py-8">
         <div className="w-48">
           <Title></Title>
         </div>
