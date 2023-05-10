@@ -12,7 +12,7 @@ export const CardsNumberSelectionList: React.FC<CardsNumberSelectionListProps> =
   selectedCard,
   setSelectedCard,
 }) => {
-  const cards = [25, 50, 75, 100, 9999];
+  const cards = [50, 75, 100, 9999];
 
   return (
     <>
