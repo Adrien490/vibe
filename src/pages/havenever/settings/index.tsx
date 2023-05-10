@@ -1,39 +1,16 @@
 import { HiArrowLeft } from "react-icons/hi2";
 import { motion } from "framer-motion";
-import { type Key, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Modal from "~/components/shared/modal";
 import { HaveNeverListForSettings } from "~/components/haveNever/haveNeverListForSettings";
 import { CreateHaveNeverForm } from "~/components/haveNever/createHaveNeverForm";
-import { api } from "~/utils/api";
-import Loader from "~/components/shared/loader";
-import { HaveNever } from "@prisma/client";
 
 export default function Settings() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { data:haveNever, isFetching, refetch, isRefetching } = api.haveNever.getAll.useQuery();
-  const { mutateAsync, isLoading } = api.haveNever.deleteById.useMutation();
-
-  const handleDeleteWrapper = (id: number) => {
-    const deleteItem = async () => {
-      await handleDelete(id);
-    };
-  
-    void deleteItem();
-  };
-  const handleDelete = async (id: number) => {
-    try {
-      await mutateAsync({ id });
-      await refetch();
-    } catch (error) {
-      console.error("Failed to delete item:", error);
-    }
-  };
-
 
   return (
     <>
-    {isFetching || isRefetching && <Loader></Loader>}
       <div className="relative sticky top-0 z-20 flex h-20 justify-center p-3">
         <h2 className="m-0 text-center text-3xl text-white">Paramètres</h2>
         <Link
@@ -45,7 +22,7 @@ export default function Settings() {
       </div>
       <div className="game-container flex flex-col overflow-y-auto p-3">
         <div className="flex flex-col">
-          <HaveNeverListForSettings haveNever={haveNever} handleDeleteWrapper={handleDeleteWrapper}></HaveNeverListForSettings>
+          <HaveNeverListForSettings></HaveNeverListForSettings>
         </div>
       </div>
       <div className="flex h-40 w-full items-center justify-center overflow-hidden bg-background">

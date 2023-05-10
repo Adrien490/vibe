@@ -12,7 +12,7 @@ export const CardsNumberSelectionList: React.FC<CardsNumberSelectionListProps> =
   selectedCard,
   setSelectedCard,
 }) => {
-  const cards = [25, 50, 75, 100];
+  const cards = [25, 50, 75, 100, 9999];
 
   return (
     <>
@@ -33,7 +33,7 @@ export const CardsNumberSelectionList: React.FC<CardsNumberSelectionListProps> =
           }
           transition={scaleAnimation.transition}
         >
-          {item}
+          {item != 9999 ? item: "∞"}
         </motion.div>
       ))}
     </>

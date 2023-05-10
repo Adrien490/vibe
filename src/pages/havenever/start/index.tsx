@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
-import { CardsList } from "~/components/haveNever/cardsList";
+import { CardItem } from "~/components/haveNever/cardItem";
 import { ForwardButton } from "~/components/haveNever/forwardButton";
 import { ProgressBar } from "~/components/haveNever/progressBar";
 import Loader from "~/components/shared/loader";
@@ -32,7 +32,7 @@ export default function Start() {
   const handleClick = () => {
     if (shuffledData.length > 0) {
       setShuffledData(shuffledData.slice(1));
-      setProgress(progress + 100 / initialCardsCount); // Use initialCardsCount here
+      setProgress(progress + 100 / initialCardsCount); 
     }
   };
   return (
@@ -48,9 +48,12 @@ export default function Start() {
         </Link>
       </div>
       <div className="game-container flex items-center justify-center bg-background p-3">
-      <AnimatePresence>
-        <CardsList shuffledData={shuffledData}></CardsList>
-        </AnimatePresence>
+        {shuffledData[0]!==undefined && (
+          <AnimatePresence>
+          <CardItem id={shuffledData[0].id} phrase={shuffledData[0].phrase}></CardItem>
+          </AnimatePresence>
+        )}
+      
       </div>
       <div className="flex h-40 w-full flex-col items-center justify-center gap-3 overflow-hidden bg-background">
         <ForwardButton handleClick={handleClick}></ForwardButton>

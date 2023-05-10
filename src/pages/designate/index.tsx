@@ -2,10 +2,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
+import { UserList } from "~/components/designate/UserList";
 import Modal from "~/components/shared/modal";
+import { api } from "~/utils/api";
 
 export default function Room() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const {data: users, isFetching} = api.user.getAll.useQuery()
+    console.log(users)
   return (
     <>
       <div className="relative flex h-20 justify-center p-2">
@@ -19,10 +23,10 @@ export default function Room() {
       </div>
       <div className="h-[calc(100vh_-_240px)] flex flex-col py-8 gap-8 items-center overflow-y-auto">
         <div className="text-white text-xl">
-        Liste des salons disponibles 
+        Liste des participants
         </div>
-        <div className="text-white">
-            test
+        <div className="h-96 flex flex-col py-5 w-5/6 border-2 border-primary gap-3 items-center w-full mx-5 text-white">
+            <UserList users={users}></UserList>
         </div>
         
       </div>
@@ -33,7 +37,7 @@ export default function Room() {
           whileTap={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
         >
-          Créer un salon
+         Lancer
         </motion.button>
       </div>
       <Modal

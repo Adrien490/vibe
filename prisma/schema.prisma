@@ -8,12 +8,10 @@ datasource db {
     relationMode = "prisma"
 }
 
-model Room {
+model User{
     id        Int   @id @default(autoincrement())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    name      String
-    public    Boolean
+    name      String @unique
+    deviceId  String @default("")
 }
 
 

@@ -1,6 +1,7 @@
 import { haveNeverCategoryRouter } from './routers/haveNeverCategory';
 import { createTRPCRouter } from "~/server/api/trpc";
 import { haveNeverRouter } from './routers/haveNever';
+import { userRouter } from './routers/user';
 
 /**
  * This is the primary router for your server.
@@ -9,7 +10,8 @@ import { haveNeverRouter } from './routers/haveNever';
  */
 export const appRouter = createTRPCRouter({
   haveNeverCategories: haveNeverCategoryRouter,
-  haveNever: haveNeverRouter
+  haveNever: haveNeverRouter,
+  user: userRouter
 });
 
 // export type definition of API
