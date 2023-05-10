@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
-import { UserList } from "~/components/designate/UserList";
 import Modal from "~/components/shared/modal";
 import { api } from "~/utils/api";
 
@@ -26,7 +25,7 @@ export default function Room() {
         Liste des participants
         </div>
         <div className="h-96 flex flex-col py-5 w-5/6 border-2 border-primary gap-3 items-center w-full mx-5 text-white">
-            <UserList users={users}></UserList>
+            
         </div>
         
       </div>
