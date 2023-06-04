@@ -11,10 +11,10 @@ const Home: NextPage = () => {
       redirect_url: "/havenever",
     },
     {
-      title: "Désigne !",
-      description: "Désignez un ou plusieurs joueurs",
+      title: "Cercle des secrets",
+      description: "Révèlez vos amis sous un jour nouveau",
       image_url: "/img/man_pointing.png",
-      redirect_url: "/designate",
+      redirect_url: "/secrets-circle",
     },
     {
       title: "Tour de table",
