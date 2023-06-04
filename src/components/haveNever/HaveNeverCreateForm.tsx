@@ -2,7 +2,6 @@ import { type HaveNeverCategory } from "@prisma/client";
 import { useFormik } from "formik";
 import useModalStore from "~/stores/useModalStore";
 import { api } from "~/utils/api";
-import Loader from "../shared/Loader";
 
 
 
@@ -31,7 +30,6 @@ export const HaveNeverCreateForm = () => {
 
   return (
     <>
-      {isLoading && <Loader></Loader>}
       <h2 className="mt-8 text-center text-xl text-white">
           Je n&apos;ai jamais ...
         </h2>
