@@ -1,6 +1,6 @@
 import { HiArrowLeft } from "react-icons/hi2";
 import Link from "next/link";
-import { HaveNeverListForSettings } from "~/components/haveNever/haveNeverListForSettings";
+import { HaveNeverListForSettings } from "~/components/haveNever/HaveNeverListForSettings";
 import { HaveNeverCreateButton } from "~/components/haveNever/HaveNeverCreateButton";
 
 export default function Settings() {

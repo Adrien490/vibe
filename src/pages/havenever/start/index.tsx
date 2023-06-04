@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
-import { CardItem } from "~/components/haveNever/cardItem";
-import { ForwardButton } from "~/components/haveNever/forwardButton";
-import { ProgressBar } from "~/components/haveNever/progressBar";
+import { CardItem } from "~/components/haveNever/CardItem";
+import { ForwardButton } from "~/components/haveNever/ForwardButton";
+import { ProgressBar } from "~/components/haveNever/ProgressBar";
 import Loader from "~/components/shared/Loader";
 import { api } from "~/utils/api";
 

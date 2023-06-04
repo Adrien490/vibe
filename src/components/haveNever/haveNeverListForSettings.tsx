@@ -2,7 +2,7 @@ import { type HaveNever } from "@prisma/client";
 import { AnimatePresence } from "framer-motion";
 import React, { type Key } from "react";
 import { api } from "~/utils/api";
-import { HaveNeverItemForSettings } from "./haveNeverItemForSettings";
+import { HaveNeverItemForSettings } from "./HaveNeverItemForSettings";
 
 
 export const HaveNeverListForSettings = () => {

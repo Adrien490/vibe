@@ -1,9 +1,9 @@
 import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 import Link from "next/link";
-import { CardsNumberSelectionList } from "~/components/haveNever/cardsNumberSelectionList";
-import { StartButton } from "~/components/haveNever/startButton";
+import { CardsNumberSelectionList } from "~/components/haveNever/CardsNumberSelectionList";
+import { StartButton } from "~/components/haveNever/StartButton";
 import { useState } from "react";
-import { CategorySelectionList } from "~/components/haveNever/categorySelectionList";
+import { CategorySelectionList } from "~/components/haveNever/CategorySelectionList";
 import { type HaveNeverCategory } from "@prisma/client";
 import { api } from "~/utils/api";
 
