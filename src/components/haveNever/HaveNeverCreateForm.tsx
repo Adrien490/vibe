@@ -1,16 +1,17 @@
 import { type HaveNeverCategory } from "@prisma/client";
 import { useFormik } from "formik";
+import useModalStore from "~/stores/useModalStore";
 import { api } from "~/utils/api";
-import Loader from "../shared/loader";
+import Loader from "../shared/Loader";
 
-interface CreateHaveNeverFormProps {
-  onClose: () => void;
-}
 
-export const CreateHaveNeverForm = ({ onClose }: CreateHaveNeverFormProps) => {
+
+
+export const HaveNeverCreateForm = () => {
   const { data } = api.haveNeverCategories.getAll.useQuery();
   const { mutateAsync, isLoading } = api.haveNever.create.useMutation();
   const { refetch, isRefetching } = api.haveNever.getAll.useQuery();
+  const modal = useModalStore((state) => state);
 
   const formik = useFormik({
     initialValues: {
@@ -24,13 +25,16 @@ export const CreateHaveNeverForm = ({ onClose }: CreateHaveNeverFormProps) => {
       };
       await mutateAsync(data);
       await refetch();
-      onClose();
+      modal.close();
     },
   });
 
   return (
     <>
       {isLoading && <Loader></Loader>}
+      <h2 className="mt-8 text-center text-xl text-white">
+          Je n&apos;ai jamais ...
+        </h2>
       <form className="flex py-1 flex-col gap-3" onSubmit={formik.handleSubmit}>
         <textarea
           rows={2}

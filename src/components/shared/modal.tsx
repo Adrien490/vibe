@@ -1,61 +1,44 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { modalVariants } from "../../hooks/useAnimation";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
+import { modalVariants } from "~/hooks/useAnimation";
+import useModalStore from "~/stores/useModalStore";
 
-interface ModalProps {
-  onClose: () => void;
-  width: string;
-  height?: number;
-  className: string;
-  modalIsOpen: boolean;
-  children: React.ReactNode;
-  position?: "top" | "bottom" | "center";
-}
+const Modal = () => {
+  const modal = useModalStore((state) => state);
 
-const Modal = ({
-  onClose,
-  width,
-  height,
-  modalIsOpen,
-  children,
-  className,
-  position = "bottom",
-}: ModalProps) => {
+  const handleDragEnd = (event: MouseEvent, info: PanInfo) => {
+    const velocityY = Math.abs(info.velocity.y);
 
-  const positionClass = () => {
-    switch (position) {
-      case "top":
-        return "items-start";
-      case "bottom":
-        return "items-end";
-      case "center":
-        return "items-center";
-      default:
-        return "items-end";
+    if (velocityY > 700 && info.offset.y > 0) {
+      modal.close();
     }
   };
 
   return (
     <>
       <AnimatePresence>
-        {modalIsOpen && (
+        {modal.isOpen && (
           <motion.div
             initial="hidden"
             animate="visible"
             exit="hidden"
             variants={modalVariants}
-            className={`fixed overflow-hidden top-0 left-0 right-0 bottom-0 bg-black bg-opacity-20 flex ${positionClass()} justify-center z-20`}
-            onClick={onClose}
+            className="fixed bottom-0 left-0 right-0 top-0 z-10 flex items-center justify-center bg-blue-900"
           >
             <motion.div
-              className={`bg-background relative p-3 max-h-screen overflow-y-auto ${className}`}
-              onClick={(e) => e.stopPropagation()}
-              style={{ width: width, height: height }}
-              initial={{ y: "100vh" }}
+              className={`absolute absolute bottom-0 w-full overflow-y-auto overscroll-contain p-2 shadow-xl bg-background overflow-y-auto`}
+              style={{
+                height: modal.height,
+              }}
+              initial={{ y: "1000px" }}
               animate={{ y: 0 }}
-              exit={{ y: "100vh" }}
-              transition={{ duration: 0.4 }}
+              exit={{ y: "1000px" }}
+              transition={{ duration: 0.3 }}
+              drag="y" // Enable vertical drag
+              dragConstraints={{ top: 0, bottom: 300 }}
+              dragSnapToOrigin={true}
+              onDragEnd={handleDragEnd}
             >
-              {children}
+              {modal.content}
             </motion.div>
           </motion.div>
         )}

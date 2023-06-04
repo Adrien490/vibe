@@ -7,7 +7,7 @@ import { HiArrowLeft } from "react-icons/hi2";
 import { CardItem } from "~/components/haveNever/cardItem";
 import { ForwardButton } from "~/components/haveNever/forwardButton";
 import { ProgressBar } from "~/components/haveNever/progressBar";
-import Loader from "~/components/shared/loader";
+import Loader from "~/components/shared/Loader";
 import { api } from "~/utils/api";
 
 export default function Start() {

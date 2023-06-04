@@ -4,6 +4,8 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import Head from "next/head";
+import Modal from "~/components/shared/Modal";
+
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -14,6 +16,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <meta name="theme-color" content="#000" />
       </Head>
       <main className="min-h-screen bg-background">
+      <Modal></Modal>
         <Component {...pageProps} />
       </main>
     </>

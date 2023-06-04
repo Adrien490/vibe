@@ -12,6 +12,7 @@
     font-family: "Raleway-Regular";
     -webkit-overflow-scrolling: touch;
     overflow: hidden;
+    position:fixed;
   }
   /* Hide scrollbar for Chrome, Safari and Opera */
   .hide-scroll-bar::-webkit-scrollbar {

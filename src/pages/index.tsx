@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import { GameList } from "~/components/gameList";
-import { Title } from "~/components/shared/title";
-import Typewriter from "typewriter-effect";
+import { Title } from "~/components/shared/Title";
 
 const Home: NextPage = () => {
   const games = [
@@ -29,18 +28,6 @@ const Home: NextPage = () => {
       <div className="z-20 flex flex-col items-center justify-center gap-5 overflow-hidden p-3 py-8">
         <div className="w-48">
           <Title></Title>
-        </div>
-
-        <div className="text-xl text-white">
-          <Typewriter
-            options={{
-              strings: ["Les meilleurs jeux pour viber en soirée !"],
-              autoStart: true,
-              loop: false,
-              deleteSpeed: Number.MAX_SAFE_INTEGER,
-              delay: 20,
-            }}
-          />
         </div>
       </div>
       <div className="flex h-[calc(100vh_-_200px)] flex-col gap-4 overflow-y-auto py-8">

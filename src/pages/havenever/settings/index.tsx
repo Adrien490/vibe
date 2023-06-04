@@ -1,13 +1,9 @@
 import { HiArrowLeft } from "react-icons/hi2";
-import { motion } from "framer-motion";
-import { useState } from "react";
 import Link from "next/link";
-import Modal from "~/components/shared/modal";
 import { HaveNeverListForSettings } from "~/components/haveNever/haveNeverListForSettings";
-import { CreateHaveNeverForm } from "~/components/haveNever/createHaveNeverForm";
+import { HaveNeverCreateButton } from "~/components/haveNever/HaveNeverCreateButton";
 
 export default function Settings() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <>
@@ -26,28 +22,9 @@ export default function Settings() {
         </div>
       </div>
       <div className="flex h-40 w-full items-center justify-center overflow-hidden bg-background">
-        <motion.button
-          onClick={() => setModalIsOpen(true)}
-          className="border-3 w-60 rounded-full border border-white bg-primary p-1 p-3 text-xl text-white text-white"
-          whileTap={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        >
-          Ajouter une phrase
-        </motion.button>
+        <HaveNeverCreateButton></HaveNeverCreateButton>
       </div>
-      <Modal
-        width={"100%"}
-        className={"flex flex-col gap-8"}
-        modalIsOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
-      >
-        <h2 className="mt-8 text-center text-xl text-white">
-          Je n&apos;ai jamais ...
-        </h2>
-        <CreateHaveNeverForm
-          onClose={() => setModalIsOpen(false)}
-        ></CreateHaveNeverForm>
-      </Modal>
+      
     </>
   );
 }

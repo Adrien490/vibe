@@ -2,11 +2,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
-import Modal from "~/components/shared/modal";
 import { api } from "~/utils/api";
 
 export default function Room() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
     const {data: users, isFetching} = api.user.getAll.useQuery()
     console.log(users)
   return (
@@ -31,7 +29,7 @@ export default function Room() {
       </div>
       <div className="flex h-40 w-full items-center justify-center overflow-hidden">
         <motion.button
-          onClick={() => setModalIsOpen(true)}
+          onClick={() => {alert("t")}}
           className="border-3 w-60 rounded-full border border-white bg-primary p-1 p-3 text-xl text-white text-white"
           whileTap={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
@@ -39,17 +37,7 @@ export default function Room() {
          Lancer
         </motion.button>
       </div>
-      <Modal
-        width={"100%"}
-        className={"flex flex-col gap-8"}
-        modalIsOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
-      >
-        <h2 className="mt-8 text-center text-xl text-white">
-          Créez un salon et rejoignez la partie
-        </h2>
-        
-      </Modal>
+      
     </>
   );
 }
