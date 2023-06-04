@@ -8,7 +8,7 @@ const Modal = () => {
   const handleDragEnd = (event: MouseEvent, info: PanInfo) => {
     const velocityY = Math.abs(info.velocity.y);
 
-    if (velocityY > 700 && info.offset.y > 0) {
+    if (velocityY > 600 && info.offset.y > 0) {
       modal.close();
     }
   };
@@ -22,7 +22,7 @@ const Modal = () => {
             animate="visible"
             exit="hidden"
             variants={modalVariants}
-            className="fixed bottom-0 left-0 right-0 top-0 z-10 flex items-center justify-center bg-blue-900"
+            className="fixed overflow-hidden bottom-0 left-0 right-0 top-0 z-10 flex items-center justify-center bg-blue-900"
           >
             <motion.div
               className={`absolute absolute bottom-0 w-full overflow-y-auto overscroll-contain p-2 shadow-xl bg-background overflow-y-auto`}
