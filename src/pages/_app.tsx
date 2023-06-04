@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import Head from "next/head";
-import Modal from "~/components/shared/Modal";
+import Modal from "~/components/shared/modal";
 
 
 const MyApp: AppType = ({ Component, pageProps }) => {
