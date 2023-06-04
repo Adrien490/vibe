@@ -14,6 +14,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon-512x512.png"></link>
         <meta name="theme-color" content="#000" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+
       </Head>
       <main className="min-h-screen bg-background">
       <Modal></Modal>
