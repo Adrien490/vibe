@@ -2,7 +2,6 @@ import { type HaveNever } from "@prisma/client";
 import { AnimatePresence } from "framer-motion";
 import React, { type Key } from "react";
 import { api } from "~/utils/api";
-import Loader from "../shared/Loader";
 import { HaveNeverItemForSettings } from "./haveNeverItemForSettings";
 
 
@@ -29,7 +28,6 @@ export const HaveNeverListForSettings = () => {
   
   return (
     <>
-    {isFetching || isRefetching && <Loader></Loader>}
     <AnimatePresence>
       {haveNever &&
         haveNever.map((item: HaveNever, index: Key) => (
