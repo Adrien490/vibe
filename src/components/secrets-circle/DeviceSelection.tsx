@@ -18,7 +18,7 @@ export const DeviceSelection = () => {
         }
     ]
   return (
-    <div className='flex flex-col gap-14 w-full'>
+    <div className='flex flex-col gap-8 w-full'>
         {options.map((option, index) => (
         <motion.div
         onClick={()=>router.push(option.link)}

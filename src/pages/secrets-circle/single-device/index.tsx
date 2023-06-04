@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { HiArrowLeft } from "react-icons/hi2";
+import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 import { SecretsCircleAddPlayerForm } from "~/components/secrets-circle/SecretsCircleAddPlayerForm";
 import { SecretsCirclePlayersList } from "~/components/secrets-circle/SecretsCirclePlayersList";
 
@@ -42,6 +42,12 @@ export default function SingleDevice() {
           href="/secrets-circle"
         >
           <HiArrowLeft size={25}></HiArrowLeft>
+        </Link>
+        <Link
+          className="absolute right-1 top-2 animate-bounce rounded-xl p-3 text-white"
+          href="/secrets-circle/single-device/settings"
+        >
+          <HiOutlineCog6Tooth size={25}></HiOutlineCog6Tooth>
         </Link>
       </div>
       <div className="flex h-[calc(100vh_-_240px)] flex-col gap-4 overflow-y-auto py-8">
