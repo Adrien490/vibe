@@ -45,10 +45,16 @@ export default function SingleDevice() {
         </Link>
       </div>
       <div className="flex h-[calc(100vh_-_240px)] flex-col gap-4 overflow-y-auto py-8">
-        <SecretsCirclePlayersList
-          setPlayers={setPlayers}
-          players={players}
-        ></SecretsCirclePlayersList>
+        {players.length > 0 ? (
+          <SecretsCirclePlayersList
+            setPlayers={setPlayers}
+            players={players}
+          ></SecretsCirclePlayersList>
+        ) : (
+          <div className="flex h-full items-center justify-center text-sm italic text-white">
+            Veuillez ajouter des joueurs à la partie...
+          </div>
+        )}
       </div>
 
       <div className="flex h-40 w-full items-center justify-center overflow-hidden bg-background">
