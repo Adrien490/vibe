@@ -8,7 +8,7 @@ export const SecretsCircleCreateButton = () => {
   return (
     <motion.button
       onClick={() =>
-        modal.open(<SecretsCircleCreateForm></SecretsCircleCreateForm>, 470)
+        modal.open(<SecretsCircleCreateForm></SecretsCircleCreateForm>, 500)
       }
       className="border-3 w-60 rounded-full border border-white bg-primary p-1 p-3 text-xl text-white text-white"
       whileTap={{ scale: 1.1 }}

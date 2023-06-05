@@ -45,7 +45,7 @@ export const HaveNeverCreateForm = () => {
         />
 
         <select
-          className="border-1 w-full py-5 rounded-lg border-secondary bg-background text-white"
+          className="border-1 w-full py-8 rounded-lg border-secondary bg-background text-white"
           id="categoryId"
           name="categoryId"
           onChange={formik.handleChange}
