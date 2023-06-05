@@ -1,3 +1,4 @@
+import { secretsCircleCategoryRouter } from './routers/secretsCircleCategory';
 import { haveNeverCategoryRouter } from './routers/haveNeverCategory';
 import { createTRPCRouter } from "~/server/api/trpc";
 import { haveNeverRouter } from './routers/haveNever';
@@ -13,7 +14,8 @@ export const appRouter = createTRPCRouter({
   haveNeverCategories: haveNeverCategoryRouter,
   haveNever: haveNeverRouter,
   user: userRouter,
-  secretsCircle: secretsCircleRouter
+  secretsCircle: secretsCircleRouter,
+  secretsCircleCategory: secretsCircleCategoryRouter
 });
 
 // export type definition of API

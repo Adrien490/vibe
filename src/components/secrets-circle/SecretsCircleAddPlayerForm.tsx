@@ -44,14 +44,7 @@ export const SecretsCircleAddPlayerForm = ({
       >
         <HiPlus size={20}></HiPlus>
       </motion.button>
-      <Link href="/secrets-circle/single-device/start">
-        <motion.div
-          whileTap={tapAnimation}
-          className="flex items-center justify-center rounded-full bg-secondary p-3 text-white"
-        >
-          Go!
-        </motion.div>
-      </Link>
+      
     </form>
   );
 };

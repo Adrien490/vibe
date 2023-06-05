@@ -1,9 +1,12 @@
+import { motion } from "framer-motion";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 import { SecretsCircleAddPlayerForm } from "~/components/secrets-circle/SecretsCircleAddPlayerForm";
 import { SecretsCirclePlayersList } from "~/components/secrets-circle/SecretsCirclePlayersList";
+import { StartButton } from "~/components/secrets-circle/StartButton";
+import { tapAnimation } from "~/hooks/useAnimation";
 
 export default function SingleDevice() {
   const [players, setPlayers] = useState([] as string[]);
@@ -63,10 +66,13 @@ export default function SingleDevice() {
         )}
       </div>
 
-      <div className="flex h-40 w-full items-center justify-center overflow-hidden bg-background">
+      <div className="flex h-40 gap-3 w-full items-center justify-center overflow-hidden bg-background">
         <SecretsCircleAddPlayerForm
           handleSubmit={handleSubmit}
         ></SecretsCircleAddPlayerForm>
+        
+        <StartButton></StartButton>
+      
       </div>
     </>
   );

@@ -14,7 +14,6 @@ model User{
     deviceId  String @default("")
 }
 
-
 model HaveNeverCategory {
     id         Int         @id @default(autoincrement())
     name       String
@@ -30,7 +29,17 @@ model HaveNever {
     @@index([categoryId])
 }
 
+model SecretsCircleCategory {
+    id             Int             @id @default(autoincrement())
+    name           String
+    secretsCircles SecretsCircle[] @relation("CategorySecretsCircles")
+}
+
 model SecretsCircle {
-    id         Int               @id @default(autoincrement())
+    id         Int                 @id @default(autoincrement())
     phrase     String 
+    categoryId Int
+    category   SecretsCircleCategory @relation("CategorySecretsCircles", fields: [categoryId], references: [id])
+
+    @@index([categoryId])
 }
