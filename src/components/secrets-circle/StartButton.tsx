@@ -8,7 +8,7 @@ export const StartButton = () => {
     const modal = useModalStore((state) => state);
   return (
     <motion.div
-        onClick={()=>modal.open(<ChooseOptions></ChooseOptions>, 600)}
+        onClick={()=>modal.open(<ChooseOptions></ChooseOptions>, 590)}
           whileTap={tapAnimation}
           className="flex items-center justify-center rounded-full bg-secondary p-3 text-white"
         >

@@ -67,7 +67,7 @@ export const SecretsCircleCreateForm = () => {
         />
 
         <select
-          className="border-1 w-full rounded-lg border-secondary bg-background py-8 text-white"
+          className="border-1 w-full rounded-lg border-secondary bg-background h-20 text-white"
           id="categoryId"
           name="categoryId"
           onChange={formik.handleChange}
