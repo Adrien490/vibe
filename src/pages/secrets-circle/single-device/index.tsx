@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -6,10 +6,12 @@ import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 import { SecretsCircleAddPlayerForm } from "~/components/secrets-circle/SecretsCircleAddPlayerForm";
 import { SecretsCirclePlayersList } from "~/components/secrets-circle/SecretsCirclePlayersList";
 import { StartButton } from "~/components/secrets-circle/StartButton";
-import { tapAnimation } from "~/hooks/useAnimation";
+import { startButtonVariants, tapAnimation } from "~/hooks/useAnimation";
 
 export default function SingleDevice() {
   const [players, setPlayers] = useState([] as string[]);
+  
+  
   //const players = JSON.parse(Cookies.get('secretsCirclePlayers') || '[]') as string[];
   useEffect(() => {
     const players = JSON.parse(
@@ -37,9 +39,7 @@ export default function SingleDevice() {
   return (
     <>
       <div className="relative flex h-20 justify-center p-2">
-        <h2 className="text-center text-3xl text-white">
-          Participants
-        </h2>
+        <h2 className="text-center text-3xl text-white">Participants</h2>
         <Link
           className="absolute left-1 top-2 rounded-xl p-3 text-white"
           href="/secrets-circle"
@@ -66,13 +66,23 @@ export default function SingleDevice() {
         )}
       </div>
 
-      <div className="flex h-40 gap-3 w-full items-center justify-center overflow-hidden bg-background">
+      <div className="flex h-40 w-full items-center justify-center gap-3 overflow-hidden bg-background">
         <SecretsCircleAddPlayerForm
           handleSubmit={handleSubmit}
         ></SecretsCircleAddPlayerForm>
-        
+
+<AnimatePresence>
+    {players.length > 2 && (
+      <motion.div
+        initial="hidden"
+        animate="show"
+        exit="exit"
+        variants={startButtonVariants}
+      >
         <StartButton></StartButton>
-      
+      </motion.div>
+    )}
+  </AnimatePresence>
       </div>
     </>
   );

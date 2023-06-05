@@ -30,6 +30,12 @@ export const scaleAnimation = {
   animate: { scale: 1.1 },
   transition: { duration: 0.2 },
 };
+
+export const startButtonVariants = {
+  hidden: { opacity: 0, y: 50 }, // Position de départ (invisible et un peu en dessous)
+  show: { opacity: 1, y: 0 }, // Position finale (complètement visible et à la bonne position)
+  exit: { opacity: 0, y: 50 }, // Position de sortie (même que la position de départ)
+};
 export const modalVariants = {
   visible: {
     opacity: 1,

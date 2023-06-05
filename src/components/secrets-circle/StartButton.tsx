@@ -10,7 +10,7 @@ export const StartButton = () => {
     <motion.div
         onClick={()=>modal.open(<ChooseOptions></ChooseOptions>, 590)}
           whileTap={tapAnimation}
-          className="flex items-center justify-center rounded-full bg-secondary p-3 text-white"
+          className="cursor-pointer flex items-center justify-center rounded-full bg-secondary p-3 text-white"
         >
           Go!
         </motion.div>
