@@ -76,7 +76,7 @@ export default function Settings() {
           placeholder="Recherche..."
           value={search}
           onChange={handleSearch}
-          className="w-60 rounded-full border-2 border-secondary bg-background p-3 text-black text-white"
+          className="w-48 rounded-full border-2 border-secondary bg-background p-3 text-black text-white"
         />
       </div>
     </>

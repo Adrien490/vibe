@@ -21,7 +21,7 @@ export const listVariants = {
   visible: (index: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: index * 0.002 },
+    transition: { delay: index * 0.05 },
   }),
 };
 

@@ -28,7 +28,7 @@ export const HaveNeverCreateForm = () => {
   });
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <h2 className="mt-8 text-center text-xl text-white">
         Je n&apos;ai jamais ...
       </h2>
@@ -62,7 +62,7 @@ export const HaveNeverCreateForm = () => {
         <div className="absolute left-1/2 bottom-5 transform -translate-x-1/2">
   <motion.button
     whileTap={tapAnimation}
-    className="border-3 rounded-lg border-white bg-primary w-48 px-3 py-5 text-white"
+    className="border-3 rounded-lg border-white bg-secondary w-48 px-3 py-5 text-white"
     type="submit"
   >
     Ajouter

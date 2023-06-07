@@ -1,42 +1,60 @@
 import { type SecretsCircle } from "@prisma/client";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { type Key } from "react";
-import { api } from "~/utils/api";
-import Loader from "../shared/Loader";
-import { SecretsCircleItemForSettings } from "./SecretsCircleItemForSettings";
+import { HiOutlineMinus } from "react-icons/hi2";
+import { listVariants } from "~/hooks/useAnimation";
 
+interface SecretsCircleListForSettingsProps {
+  secretsCircleList: SecretsCircle[] | undefined;
+  handleDelete: (id: number) => void;
+  search: string;
+}
 
+export const SecretsCircleListForSettings = ({
+  secretsCircleList,
+  handleDelete,
+  search,
+}: SecretsCircleListForSettingsProps) => {
+  const filteredList = secretsCircleList?.filter((item) =>
+    item.phrase
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase()
+      .includes(
+        search
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLocaleLowerCase()
+      )
+  );
 
-export const SecretsCircleListForSettings = () => {
-
-  const { data:phrases, isFetching, refetch, isRefetching, isLoading } = api.secretsCircle.getAll.useQuery();
-  const { mutateAsync } = api.secretsCircle.deleteById.useMutation();
-
-  const handleDeleteWrapper = (id: number) => {
-    const deleteItem = async () => {
-      await handleDelete(id);
-    };
-  
-    void deleteItem();
-  };
-  const handleDelete = async (id: number) => {
-    try {
-      await mutateAsync({ id });
-      await refetch();
-    } catch (error) {
-      console.error("Failed to delete item:", error);
-    }
-  };
-  
   return (
     <>
-    {isLoading && <Loader></Loader>}
-    <AnimatePresence>
-      {phrases &&
-        phrases.map((item: SecretsCircle, index: Key) => (
-          <SecretsCircleItemForSettings key={index} id={item.id} phrase={item.phrase} handleDeleteWrapper={handleDeleteWrapper}></SecretsCircleItemForSettings>
-        ))}
-        </AnimatePresence>
+      <AnimatePresence>
+        {filteredList &&
+          filteredList.map((item: SecretsCircle, index: Key) => (
+            <motion.div
+              key={item.id}
+              className="flex border-b border-white p-2"
+              variants={listVariants}
+              initial={"visible"}
+              animate={"visible"}
+              exit={"hidden"}
+            >
+              <div className="flex w-4/5 items-center break-words p-4 text-white">
+                {item.phrase}
+              </div>
+              <div className="flex w-1/5 items-center justify-end p-4">
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className="rounded-full bg-red-400 p-2 text-white"
+                >
+                  <HiOutlineMinus className="text-xl" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+      </AnimatePresence>
     </>
   );
 };

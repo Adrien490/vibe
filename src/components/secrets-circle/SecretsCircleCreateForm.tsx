@@ -42,14 +42,14 @@ export const SecretsCircleCreateForm = () => {
       <div className="flex justify-center gap-3">
         <motion.button
           whileTap={tapAnimation}
-          className="rounded-xl bg-secondary p-3 text-white"
+          className="rounded-xl bg-primary p-3 text-white"
           onClick={() => insertPlayer(" {player1}")}
         >
           Citer le joueur 1
         </motion.button>
         <motion.button
           whileTap={tapAnimation}
-          className="rounded-xl bg-secondary p-3 text-white"
+          className="rounded-xl bg-primary p-3 text-white"
           onClick={() => insertPlayer(" {player2}")}
         >
           Citer le joueur 2
@@ -85,13 +85,15 @@ export const SecretsCircleCreateForm = () => {
             ))}
         </select>
 
-        <motion.button
-        whileTap={tapAnimation}
-          className="border-3 rounded-lg border-white bg-primary p-3 text-white"
-          type="submit"
-        >
-          Ajouter
-        </motion.button>
+        <div className="absolute left-1/2 bottom-5 transform -translate-x-1/2">
+  <motion.button
+    whileTap={tapAnimation}
+    className="border-3 rounded-lg border-white bg-secondary w-48 px-3 py-5 text-white"
+    type="submit"
+  >
+    Ajouter
+  </motion.button>
+</div>
       </form>
     </div>
     </>
