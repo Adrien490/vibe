@@ -6,6 +6,7 @@ import { SecretsCircleCreateForm } from "~/components/secrets-circle/SecretsCirc
 import useModalStore from "~/stores/useModalStore";
 import { useState } from "react";
 import { api } from "~/utils/api";
+import Loader from "~/components/shared/Loader";
 
 export default function Settings() {
   const modal = useModalStore((state) => state);
@@ -36,6 +37,7 @@ export default function Settings() {
   };
   return (
     <>
+    {isLoading || isRefetching || (isFetching && <Loader></Loader>)}
       <div className="relative sticky top-0 z-20 flex h-20 justify-center p-3">
         <h2 className="m-0 text-center text-3xl text-white">Paramètres</h2>
         <Link

@@ -15,13 +15,7 @@ const Home: NextPage = () => {
       description: "Révèlez vos amis sous un jour nouveau",
       image_url: "/img/man_pointing.png",
       redirect_url: "/secrets-circle",
-    },
-    {
-      title: "Tour de table",
-      description: "Chacun raconte son anectote.",
-      image_url: "/img/table.png",
-      redirect_url: "/",
-    },
+    }
   ];
   return (
     <>
