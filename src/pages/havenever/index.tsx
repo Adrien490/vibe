@@ -1,11 +1,11 @@
 import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 import Link from "next/link";
 import { CardsNumberSelectionList } from "~/components/shared/CardsNumberSelectionList";
-import { StartButton } from "~/components/haveNever/StartButton";
 import { useState } from "react";
 import { CategorySelectionList } from "~/components/shared/CategorySelectionList";
 import { type HaveNeverCategory } from "@prisma/client";
 import { api } from "~/utils/api";
+import Loader from "~/components/shared/Loader";
 
 export default function HaveNever() {
   const [selectedCard, setSelectedCard] = useState<number>(50);
@@ -24,6 +24,7 @@ export default function HaveNever() {
 
   return (
     <>
+    {isFetching && <Loader></Loader>}
       <div className="relative flex h-20 justify-center p-2">
         <h2 className="text-center text-3xl text-white">Je n&apos;ai jamais</h2>
         <Link
@@ -61,10 +62,12 @@ export default function HaveNever() {
         </div>
       </div>
       <div className="flex h-40 w-full flex-col items-center justify-center gap-3 overflow-hidden">
-        <StartButton
-          selectedCategory={selectedCategory}
-          selectedCard={selectedCard}
-        ></StartButton>
+      <Link
+      className="border-3 w-60 rounded-full border border-white bg-primary p-1 p-3 text-center text-xl text-white text-white"
+      href={`/havenever/start?category=${selectedCategory?.id ? selectedCategory?.id : 0}&limit=${selectedCard}`}
+    >
+      Lancer
+    </Link>
       </div>
     </>
   );

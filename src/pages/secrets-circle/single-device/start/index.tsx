@@ -1,13 +1,12 @@
-import { type SecretsCircle, type HaveNever } from "@prisma/client";
-import { AnimatePresence, motion } from "framer-motion";
+import { type SecretsCircle } from "@prisma/client";
+import { AnimatePresence } from "framer-motion";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi2";
-import { CardItem } from "~/components/haveNever/CardItem";
-import { ForwardButton } from "~/components/haveNever/ForwardButton";
-import { ProgressBar } from "~/components/haveNever/ProgressBar";
+import { ForwardButton } from "~/components/shared/ForwardButton";
+import { ProgressBar } from "~/components/shared/ProgressBar";
 import { SecretsCircleCardItem } from "~/components/secrets-circle/SecretsCircleCardItem";
 import Loader from "~/components/shared/Loader";
 import { api } from "~/utils/api";
@@ -44,7 +43,7 @@ export default function Start() {
     ) as string[];
     setPlayers(players);
   }, []);
-  
+
   useEffect(() => {
     if (data !== undefined) {
       const newData = [...data]
@@ -79,7 +78,7 @@ export default function Start() {
             <SecretsCircleCardItem
               id={shuffledData[0].id}
               phrase={replacePlayerVars(shuffledData[0].phrase, players)}
-              players={players}
+              playerInPhrase={players.some((player) => shuffledData[0]?.phrase.includes(player))}
             ></SecretsCircleCardItem>
           </AnimatePresence>
         )}

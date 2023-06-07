@@ -1,39 +1,62 @@
 import { type HaveNever } from "@prisma/client";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { type Key } from "react";
+import { HiOutlineMinus } from "react-icons/hi2";
+import { listVariants } from "~/hooks/useAnimation";
 import { api } from "~/utils/api";
-import { HaveNeverItemForSettings } from "./HaveNeverItemForSettings";
+interface HaveNeverListForSettingsProps {
+  haveNeverList: HaveNever[] | undefined;
+  handleDelete: (id: number) => void;
+  search: string;
+}
 
+export const HaveNeverListForSettings = ({
+  haveNeverList,
+  handleDelete,
+  search
+}: HaveNeverListForSettingsProps) => {
+  const filteredList = haveNeverList?.filter(item => 
+    item.phrase
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase()
+      .includes(
+        search
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLocaleLowerCase()
+      )
+  )
 
-export const HaveNeverListForSettings = () => {
-
-  const { data:haveNever, isFetching, refetch, isRefetching } = api.haveNever.getAll.useQuery();
-  const { mutateAsync, isLoading } = api.haveNever.deleteById.useMutation();
-
-  const handleDeleteWrapper = (id: number) => {
-    const deleteItem = async () => {
-      await handleDelete(id);
-    };
-  
-    void deleteItem();
-  };
-  const handleDelete = async (id: number) => {
-    try {
-      await mutateAsync({ id });
-      await refetch();
-    } catch (error) {
-      console.error("Failed to delete item:", error);
-    }
-  };
-  
   return (
     <>
-    <AnimatePresence>
-      {haveNever &&
-        haveNever.map((item: HaveNever, index: Key) => (
-          <HaveNeverItemForSettings key={index} id={item.id} phrase={item.phrase} handleDeleteWrapper={handleDeleteWrapper}></HaveNeverItemForSettings>
-        ))}
-        </AnimatePresence>
+      <AnimatePresence>
+        {filteredList &&
+          filteredList.map((item: HaveNever, index: Key) => (
+            <motion.div
+  key={item.id}
+  className="flex border-b border-white p-2"
+  variants={listVariants}
+  initial={"visible"}
+  animate={"visible"}
+  exit={"hidden"}
+>
+
+              <div className="flex w-4/5 items-center break-words p-4 text-white">
+                {item.phrase}
+              </div>
+              <div className="flex w-1/5 items-center justify-end p-4">
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className="rounded-full bg-red-400 p-2 text-white"
+                >
+                  <HiOutlineMinus className="text-xl" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+      </AnimatePresence>
     </>
   );
 };
+

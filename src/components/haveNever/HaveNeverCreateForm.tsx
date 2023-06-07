@@ -1,10 +1,9 @@
 import { type HaveNeverCategory } from "@prisma/client";
 import { useFormik } from "formik";
+import { motion } from "framer-motion";
+import { tapAnimation } from "~/hooks/useAnimation";
 import useModalStore from "~/stores/useModalStore";
 import { api } from "~/utils/api";
-
-
-
 
 export const HaveNeverCreateForm = () => {
   const { data } = api.haveNeverCategories.getAll.useQuery();
@@ -29,13 +28,13 @@ export const HaveNeverCreateForm = () => {
   });
 
   return (
-    <>
+    <div className="flex flex-col gap-8">
       <h2 className="mt-8 text-center text-xl text-white">
-          Je n&apos;ai jamais ...
-        </h2>
-      <form className="flex py-1 flex-col gap-3" onSubmit={formik.handleSubmit}>
+        Je n&apos;ai jamais ...
+      </h2>
+      <form className="flex flex-col gap-3 py-1" onSubmit={formik.handleSubmit}>
         <textarea
-          rows={2}
+          rows={3}
           className="border-1 w-full rounded-lg border-secondary bg-background p-2 text-white"
           id="phrase"
           name="phrase"
@@ -45,7 +44,7 @@ export const HaveNeverCreateForm = () => {
         />
 
         <select
-          className="border-1 w-full h-20 rounded-lg border-secondary bg-background text-white"
+          className="border-1 text-center h-20 w-full rounded-lg border-secondary bg-background text-white"
           id="categoryId"
           name="categoryId"
           onChange={formik.handleChange}
@@ -60,13 +59,19 @@ export const HaveNeverCreateForm = () => {
             ))}
         </select>
 
-        <button
-          className="border-3 rounded-lg border-white bg-primary p-3 text-white"
-          type="submit"
-        >
-          Ajouter
-        </button>
+        <div className="absolute left-1/2 bottom-5 transform -translate-x-1/2">
+  <motion.button
+    whileTap={tapAnimation}
+    className="border-3 rounded-lg border-white bg-primary w-48 px-3 py-5 text-white"
+    type="submit"
+  >
+    Ajouter
+  </motion.button>
+</div>
+
+
+
       </form>
-    </>
+      </div>
   );
 };

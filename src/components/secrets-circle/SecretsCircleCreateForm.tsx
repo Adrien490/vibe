@@ -1,9 +1,10 @@
-import { SecretsCircleCategory } from "@prisma/client";
+import { type SecretsCircleCategory } from "@prisma/client";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { tapAnimation } from "~/hooks/useAnimation";
 import useModalStore from "~/stores/useModalStore";
 import { api } from "~/utils/api";
+import Loader from "../shared/Loader";
 
 export const SecretsCircleCreateForm = () => {
   const { data } = api.secretsCircleCategory.getAll.useQuery();
@@ -32,6 +33,8 @@ export const SecretsCircleCreateForm = () => {
   };
 
   return (
+    <>
+    {isLoading || isRefetching && <Loader></Loader>}
     <div className="flex flex-col gap-6">
       <h2 className="mt-8 text-center text-xl text-white">
         Ajouter une phrase
@@ -82,13 +85,15 @@ export const SecretsCircleCreateForm = () => {
             ))}
         </select>
 
-        <button
+        <motion.button
+        whileTap={tapAnimation}
           className="border-3 rounded-lg border-white bg-primary p-3 text-white"
           type="submit"
         >
           Ajouter
-        </button>
+        </motion.button>
       </form>
     </div>
+    </>
   );
 };

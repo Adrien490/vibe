@@ -3,13 +3,15 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { HiArrowLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
+import { ChooseOptions } from "~/components/secrets-circle/ChooseOptions";
 import { SecretsCircleAddPlayerForm } from "~/components/secrets-circle/SecretsCircleAddPlayerForm";
 import { SecretsCirclePlayersList } from "~/components/secrets-circle/SecretsCirclePlayersList";
-import { StartButton } from "~/components/secrets-circle/StartButton";
 import { startButtonVariants, tapAnimation } from "~/hooks/useAnimation";
+import useModalStore from "~/stores/useModalStore";
 
 export default function SingleDevice() {
   const [players, setPlayers] = useState([] as string[]);
+  const modal = useModalStore((state) => state);
   
   
   //const players = JSON.parse(Cookies.get('secretsCirclePlayers') || '[]') as string[];
@@ -79,7 +81,13 @@ export default function SingleDevice() {
         exit="exit"
         variants={startButtonVariants}
       >
-        <StartButton></StartButton>
+        <motion.div
+        onClick={()=>modal.open(<ChooseOptions></ChooseOptions>, 590)}
+          whileTap={tapAnimation}
+          className="cursor-pointer flex items-center justify-center rounded-full bg-secondary p-3 text-white"
+        >
+          Go!
+        </motion.div>
       </motion.div>
     )}
   </AnimatePresence>
