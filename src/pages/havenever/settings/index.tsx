@@ -41,7 +41,7 @@ export default function Settings() {
   };
   return (
     <>
-      {isLoading || isRefetching || (isFetching && <Loader></Loader>)}
+      {isLoading || isRefetching || isFetching && <Loader></Loader>}
       <div className="relative sticky top-0 z-20 flex h-20 justify-center p-3">
         <h2 className="m-0 text-center text-3xl text-white">Paramètres</h2>
         <Link
